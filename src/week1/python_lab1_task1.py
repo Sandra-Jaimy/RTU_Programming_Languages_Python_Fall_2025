@@ -1,5 +1,5 @@
 """
-Task 1 – Simple Function with Arithmetic
+  Task 1 – Simple Function with Arithmetic
 ---------------------------------------
 Write a function `circle_area(radius)` that returns the area of a circle.
 Formula: area = π × radius²

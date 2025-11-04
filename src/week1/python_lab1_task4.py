@@ -13,26 +13,34 @@ Use helper functions:
 Print formatted summary in main.
 """
 
+import re
+
 def count_characters(text):
     """Count non-space characters in a string."""
-    # TODO: implement
-    pass
+    return len([ch for ch in text if not ch.isspace()])
 
 def count_words(text):
     """Count number of words in a string."""
-    # TODO: implement
-    pass
+    return len(text.split())
 
 def extract_numbers(text):
     """Return list of integers found in text."""
-    # TODO: implement
-    pass
+    return [int(num) for num in re.findall(r"\d+", text)]
 
 def analyze_text(text):
     """Perform text-based arithmetic analysis."""
-    # TODO: call helper functions and compute total, average, etc.
-    pass
+    chars = count_characters(text)
+    words = count_words(text)
+    numbers = extract_numbers(text)
+    total = sum(numbers) if numbers else 0
+    average = total / len(numbers) if numbers else 0
+    return chars, words, numbers, total, average
 
 if __name__ == "__main__":
-    # TODO: read input, call analyze_text(), and print results
-    pass
+    text = input("Enter some text: ")
+    chars, words, numbers, total, average = analyze_text(text)
+    print(f"Non-space characters: {chars}")
+    print(f"Words: {words}")
+    print(f"Numbers found: {numbers}")
+    print(f"Sum of numbers: {total}")
+    print(f"Average of numbers: {average:.2f}")
