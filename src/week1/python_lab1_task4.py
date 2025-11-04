@@ -13,34 +13,47 @@ Use helper functions:
 Print formatted summary in main.
 """
 
-import re
-
 def count_characters(text):
     """Count non-space characters in a string."""
-    return len([ch for ch in text if not ch.isspace()])
+    # TODO: implement
+    return len(text.replace(" ", ""))
 
 def count_words(text):
     """Count number of words in a string."""
+    # TODO: implement
     return len(text.split())
 
 def extract_numbers(text):
     """Return list of integers found in text."""
-    return [int(num) for num in re.findall(r"\d+", text)]
+    # TODO: implement
+    import re
+    numbers = re.findall(r'\d+', text)
+    return [int(num) for num in numbers]
 
 def analyze_text(text):
     """Perform text-based arithmetic analysis."""
-    chars = count_characters(text)
-    words = count_words(text)
+    # TODO: call helper functions and compute total, average, etc.
+    char_count = count_characters(text)
+    word_count = count_words(text)
     numbers = extract_numbers(text)
-    total = sum(numbers) if numbers else 0
-    average = total / len(numbers) if numbers else 0
-    return chars, words, numbers, total, average
+
+    if numbers:
+        total = sum(numbers)
+        average = total / len(numbers)
+    else:
+        total = 0
+        average = 0
+
+    return char_count, word_count, numbers, total, average
 
 if __name__ == "__main__":
-    text = input("Enter some text: ")
-    chars, words, numbers, total, average = analyze_text(text)
-    print(f"Non-space characters: {chars}")
-    print(f"Words: {words}")
+    # TODO: read input, call analyze_text(), and print results
+    text = input("Enter a text with some numbers: ")
+    char_count, word_count, numbers, total, average = analyze_text(text)
+
+    print("\n=== Text Analysis Results ===")
+    print(f"Non-space characters: {char_count}")
+    print(f"Word count: {word_count}")
     print(f"Numbers found: {numbers}")
     print(f"Sum of numbers: {total}")
     print(f"Average of numbers: {average:.2f}")
